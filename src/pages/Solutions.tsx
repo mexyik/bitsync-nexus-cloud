@@ -14,7 +14,9 @@ import {
   CheckCircle,
   TrendingUp,
   Users,
-  Zap
+  Zap,
+  Star,
+  Quote
 } from "lucide-react";
 
 const Solutions = () => {
@@ -81,6 +83,41 @@ const Solutions = () => {
     }
   ];
 
+  const partners = [
+    {
+      name: "TechCorp Global",
+      logo: "https://img.freepik.com/free-vector/abstract-logo-flame-shape_1043-44.jpg",
+      testimonial: "BitSync Group transformed our entire digital infrastructure. Their expertise in system integration and consulting helped us achieve a 200% increase in operational efficiency.",
+      rating: 5,
+      position: "CTO",
+      company: "TechCorp Global"
+    },
+    {
+      name: "InnovateLabs",
+      logo: "https://img.freepik.com/free-vector/gradient-logo-template_23-2148995756.jpg",
+      testimonial: "Working with BitSync has been game-changing. Their blockchain solutions and mobile development expertise delivered exactly what we needed for our fintech platform.",
+      rating: 5,
+      position: "CEO",
+      company: "InnovateLabs"
+    },
+    {
+      name: "FutureRetail Inc",
+      logo: "https://img.freepik.com/free-vector/abstract-cross-logo_23-2148974985.jpg",
+      testimonial: "The retail integration solutions provided by BitSync exceeded our expectations. Our e-commerce platform now handles 10x more traffic with seamless performance.",
+      rating: 5,
+      position: "VP of Technology",
+      company: "FutureRetail Inc"
+    },
+    {
+      name: "GlobalHealth Systems",
+      logo: "https://img.freepik.com/free-vector/bird-colorful-gradient-design-vector_343694-2506.jpg",
+      testimonial: "BitSync's healthcare technology solutions have revolutionized our patient care system. The telemedicine platform they built is now serving thousands of patients daily.",
+      rating: 5,
+      position: "Chief Medical Officer",
+      company: "GlobalHealth Systems"
+    }
+  ];
+
   return (
     <div className="min-h-screen py-20">
       {/* Hero Section */}
@@ -140,8 +177,73 @@ const Solutions = () => {
         </div>
       </section>
 
+      {/* Partners & Testimonials Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Trusted by Industry Leaders
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              See what our partners and clients say about working with BitSync Group
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {partners.map((partner, index) => (
+              <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-white">
+                <CardHeader>
+                  <div className="flex items-center space-x-4">
+                    <img 
+                      src={partner.logo} 
+                      alt={partner.name}
+                      className="w-16 h-16 rounded-lg object-cover"
+                    />
+                    <div>
+                      <CardTitle className="text-lg">{partner.name}</CardTitle>
+                      <div className="flex items-center space-x-1">
+                        {[...Array(partner.rating)].map((_, i) => (
+                          <Star key={i} className="h-4 w-4 text-yellow-400 fill-current" />
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <div className="relative">
+                    <Quote className="absolute -top-2 -left-2 h-8 w-8 text-blue-200" />
+                    <p className="text-gray-600 italic mb-4 pl-6">
+                      "{partner.testimonial}"
+                    </p>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="font-semibold text-gray-900">{partner.position}</p>
+                      <p className="text-sm text-gray-500">{partner.company}</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          {/* Partner Logos Grid */}
+          <div className="mt-16">
+            <h3 className="text-2xl font-bold text-center text-gray-900 mb-8">Our Technology Partners</h3>
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center opacity-60">
+              <img src="https://img.freepik.com/free-vector/abstract-logo-flame-shape_1043-44.jpg" alt="Partner" className="h-12 w-auto mx-auto grayscale hover:grayscale-0 transition-all duration-300" />
+              <img src="https://img.freepik.com/free-vector/gradient-logo-template_23-2148995756.jpg" alt="Partner" className="h-12 w-auto mx-auto grayscale hover:grayscale-0 transition-all duration-300" />
+              <img src="https://img.freepik.com/free-vector/abstract-cross-logo_23-2148974985.jpg" alt="Partner" className="h-12 w-auto mx-auto grayscale hover:grayscale-0 transition-all duration-300" />
+              <img src="https://img.freepik.com/free-vector/bird-colorful-gradient-design-vector_343694-2506.jpg" alt="Partner" className="h-12 w-auto mx-auto grayscale hover:grayscale-0 transition-all duration-300" />
+              <img src="https://img.freepik.com/free-vector/abstract-logo-flame-shape_1043-44.jpg" alt="Partner" className="h-12 w-auto mx-auto grayscale hover:grayscale-0 transition-all duration-300" />
+              <img src="https://img.freepik.com/free-vector/gradient-logo-template_23-2148995756.jpg" alt="Partner" className="h-12 w-auto mx-auto grayscale hover:grayscale-0 transition-all duration-300" />
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Benefits Section */}
-      <section className="bg-gray-50 py-20">
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -173,7 +275,7 @@ const Solutions = () => {
       </section>
 
       {/* Process Section */}
-      <section className="py-20">
+      <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
