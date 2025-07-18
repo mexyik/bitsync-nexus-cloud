@@ -9,32 +9,38 @@ const Index = () => {
     {
       icon: Smartphone,
       title: "Consumer Electronics",
-      description: "Cutting-edge devices and smart solutions for modern living"
+      description: "Cutting-edge devices and smart solutions for modern living",
+      image: "/placeholder.svg"
     },
     {
       icon: Cloud,
       title: "Enterprise Solutions",
-      description: "Scalable cloud infrastructure and business transformation"
+      description: "Scalable cloud infrastructure and business transformation",
+      image: "/placeholder.svg"
     },
     {
       icon: Code,
       title: "Web & Mobile Development",
-      description: "Custom applications and digital experiences"
+      description: "Custom applications and digital experiences",
+      image: "/placeholder.svg"
     },
     {
       icon: Blocks,
       title: "Blockchain Technology",
-      description: "Decentralized solutions and cryptocurrency integration"
+      description: "Decentralized solutions and cryptocurrency integration",
+      image: "/placeholder.svg"
     },
     {
       icon: Zap,
       title: "System Integration",
-      description: "Seamless technology integration and optimization"
+      description: "Seamless technology integration and optimization",
+      image: "/placeholder.svg"
     },
     {
       icon: Shield,
       title: "Consulting Services",
-      description: "Strategic technology consulting and implementation"
+      description: "Strategic technology consulting and implementation",
+      image: "/placeholder.svg"
     }
   ];
 
@@ -45,6 +51,24 @@ const Index = () => {
     { value: "24/7", label: "Support Available" }
   ];
 
+  const features = [
+    {
+      icon: Globe,
+      title: "Global Reach",
+      description: "Serving clients across 50+ countries with localized expertise and global standards."
+    },
+    {
+      icon: Zap,
+      title: "Innovation First",
+      description: "Cutting-edge technology solutions that keep you ahead of the competition."
+    },
+    {
+      icon: Shield,
+      title: "Premium Quality",
+      description: "Enterprise-grade solutions with uncompromising quality and reliability."
+    }
+  ];
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -52,6 +76,13 @@ const Index = () => {
         <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
+            <div className="mb-8">
+              <img 
+                src="/placeholder.svg" 
+                alt="BitSync Group Hero" 
+                className="mx-auto w-32 h-32 rounded-full shadow-lg"
+              />
+            </div>
             <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
               Powering the Future of{" "}
               <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
@@ -112,8 +143,15 @@ const Index = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow duration-300 border-0 bg-white">
+              <Card key={index} className="hover:shadow-lg transition-shadow duration-300 border-0 bg-white group">
                 <CardHeader>
+                  <div className="w-full h-48 mb-4 rounded-lg overflow-hidden bg-gradient-to-br from-blue-50 to-purple-50">
+                    <img 
+                      src={service.image} 
+                      alt={service.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
                   <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center mb-4">
                     <service.icon className="h-6 w-6 text-white" />
                   </div>
@@ -139,37 +177,28 @@ const Index = () => {
                 Why Choose BitSync Group?
               </h2>
               <div className="space-y-6">
-                <div className="flex items-start space-x-4">
-                  <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
-                    <Globe className="h-4 w-4 text-blue-600" />
+                {features.map((feature, index) => (
+                  <div key={index} className="flex items-start space-x-4">
+                    <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <feature.icon className="h-4 w-4 text-blue-600" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-gray-900 mb-2">{feature.title}</h3>
+                      <p className="text-gray-600">{feature.description}</p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-900 mb-2">Global Reach</h3>
-                    <p className="text-gray-600">Serving clients across 50+ countries with localized expertise and global standards.</p>
-                  </div>
-                </div>
-                <div className="flex items-start space-x-4">
-                  <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
-                    <Zap className="h-4 w-4 text-blue-600" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-900 mb-2">Innovation First</h3>
-                    <p className="text-gray-600">Cutting-edge technology solutions that keep you ahead of the competition.</p>
-                  </div>
-                </div>
-                <div className="flex items-start space-x-4">
-                  <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
-                    <Shield className="h-4 w-4 text-blue-600" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-900 mb-2">Premium Quality</h3>
-                    <p className="text-gray-600">Enterprise-grade solutions with uncompromising quality and reliability.</p>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
             <div className="relative">
               <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-white">
+                <div className="mb-6">
+                  <img 
+                    src="/placeholder.svg" 
+                    alt="BitSync Technology" 
+                    className="w-full h-48 object-cover rounded-lg"
+                  />
+                </div>
                 <h3 className="text-2xl font-bold mb-4">Ready to Transform Your Business?</h3>
                 <p className="mb-6">Join thousands of satisfied clients who trust BitSync Group for their technology needs.</p>
                 <Button asChild variant="secondary" size="lg">

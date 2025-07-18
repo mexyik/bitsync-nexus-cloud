@@ -18,10 +18,30 @@ const Contact = () => {
     message: ""
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success("Thank you for your message! We'll get back to you within 24 hours.");
-    setFormData({ name: "", email: "", company: "", service: "", message: "" });
+    
+    // Basic validation
+    if (!formData.name || !formData.email || !formData.message) {
+      toast.error("Please fill in all required fields.");
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      // Simulate form submission
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      toast.success("Thank you for your message! We'll get back to you within 24 hours.");
+      setFormData({ name: "", email: "", company: "", service: "", message: "" });
+    } catch (error) {
+      toast.error("There was an error sending your message. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleInputChange = (field: string, value: string) => {
@@ -32,20 +52,22 @@ const Contact = () => {
     {
       icon: Mail,
       title: "Email Us",
-      content: "info@bitsyncgroup.com",
-      description: "Send us an email anytime"
+      content: "hello@bitsyncgroup.com",
+      description: "Send us an email anytime",
+      link: "mailto:hello@bitsyncgroup.com"
     },
     {
       icon: Phone,
       title: "Call Us",
-      content: "+1 (555) 123-4567",
-      description: "Mon-Fri from 8am to 6pm EST"
+      content: "+234 803 381 8401",
+      description: "Mon-Fri from 8am to 6pm WAT",
+      link: "tel:+2348033818401"
     },
     {
       icon: MapPin,
       title: "Visit Us",
-      content: "Global Headquarters",
-      description: "Multiple locations worldwide"
+      content: "22 Airport Road, Mafoluku, Lagos",
+      description: "Nigeria Office"
     },
     {
       icon: Clock,
@@ -107,6 +129,7 @@ const Contact = () => {
                         onChange={(e) => handleInputChange("name", e.target.value)}
                         required
                         className="mt-1"
+                        disabled={isSubmitting}
                       />
                     </div>
                     <div>
@@ -118,6 +141,7 @@ const Contact = () => {
                         onChange={(e) => handleInputChange("email", e.target.value)}
                         required
                         className="mt-1"
+                        disabled={isSubmitting}
                       />
                     </div>
                   </div>
@@ -129,12 +153,13 @@ const Contact = () => {
                       value={formData.company}
                       onChange={(e) => handleInputChange("company", e.target.value)}
                       className="mt-1"
+                      disabled={isSubmitting}
                     />
                   </div>
 
                   <div>
                     <Label htmlFor="service">Service of Interest</Label>
-                    <Select onValueChange={(value) => handleInputChange("service", value)}>
+                    <Select onValueChange={(value) => handleInputChange("service", value)} disabled={isSubmitting}>
                       <SelectTrigger className="mt-1">
                         <SelectValue placeholder="Select a service" />
                       </SelectTrigger>
@@ -158,6 +183,7 @@ const Contact = () => {
                       rows={5}
                       className="mt-1"
                       placeholder="Tell us about your project or requirements..."
+                      disabled={isSubmitting}
                     />
                   </div>
 
@@ -165,9 +191,10 @@ const Contact = () => {
                     type="submit" 
                     size="lg" 
                     className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
+                    disabled={isSubmitting}
                   >
                     <Send className="mr-2 h-4 w-4" />
-                    Send Message
+                    {isSubmitting ? "Sending..." : "Send Message"}
                   </Button>
                 </form>
               </CardContent>
@@ -198,7 +225,13 @@ const Contact = () => {
                       </div>
                       <div>
                         <h3 className="font-semibold text-gray-900 mb-1">{info.title}</h3>
-                        <p className="text-blue-600 font-medium mb-1">{info.content}</p>
+                        {info.link ? (
+                          <a href={info.link} className="text-blue-600 font-medium mb-1 hover:text-blue-700 transition-colors">
+                            {info.content}
+                          </a>
+                        ) : (
+                          <p className="text-blue-600 font-medium mb-1">{info.content}</p>
+                        )}
                         <p className="text-sm text-gray-600">{info.description}</p>
                       </div>
                     </div>
@@ -210,21 +243,17 @@ const Contact = () => {
             {/* Office Locations */}
             <Card className="border-0 shadow-lg">
               <CardHeader>
-                <CardTitle className="text-xl">Global Presence</CardTitle>
+                <CardTitle className="text-xl">Our Locations</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
                   <div>
-                    <h4 className="font-semibold text-gray-900">North America</h4>
-                    <p className="text-gray-600">New York, San Francisco, Toronto</p>
+                    <h4 className="font-semibold text-gray-900">Nigeria (Headquarters)</h4>
+                    <p className="text-gray-600">22 Airport Road, Mafoluku, Lagos</p>
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900">Europe</h4>
-                    <p className="text-gray-600">London, Berlin, Amsterdam</p>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900">Asia Pacific</h4>
-                    <p className="text-gray-600">Singapore, Tokyo, Sydney</p>
+                    <h4 className="font-semibold text-gray-900">Global Presence</h4>
+                    <p className="text-gray-600">Serving clients across 50+ countries worldwide</p>
                   </div>
                 </div>
               </CardContent>

@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { Cloud, Mail, Phone, MapPin, Linkedin, Twitter, Github } from "lucide-react";
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer className="bg-gray-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -53,15 +55,19 @@ const Footer = () => {
             <ul className="space-y-2">
               <li className="flex items-center space-x-2">
                 <Mail className="h-4 w-4 text-blue-400" />
-                <span className="text-gray-300">info@bitsyncgroup.com</span>
+                <a href="mailto:hello@bitsyncgroup.com" className="text-gray-300 hover:text-blue-400 transition-colors">
+                  hello@bitsyncgroup.com
+                </a>
               </li>
               <li className="flex items-center space-x-2">
                 <Phone className="h-4 w-4 text-blue-400" />
-                <span className="text-gray-300">+1 (555) 123-4567</span>
+                <a href="tel:+2348033818401" className="text-gray-300 hover:text-blue-400 transition-colors">
+                  +234 803 381 8401
+                </a>
               </li>
               <li className="flex items-center space-x-2">
                 <MapPin className="h-4 w-4 text-blue-400" />
-                <span className="text-gray-300">Global Headquarters</span>
+                <span className="text-gray-300">22 Airport Road, Mafoluku, Lagos</span>
               </li>
             </ul>
           </div>
@@ -69,7 +75,7 @@ const Footer = () => {
 
         <div className="border-t border-gray-800 mt-8 pt-8 text-center">
           <p className="text-gray-400">
-            © 2024 BitSync Group. All rights reserved. Powering the future of technology.
+            © {currentYear} BitSync Group. All rights reserved. Powering the future of technology.
           </p>
         </div>
       </div>
