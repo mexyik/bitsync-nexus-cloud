@@ -3,6 +3,15 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowRight, Smartphone, Cloud, Zap, Shield, Globe, Code, Blocks } from "lucide-react";
+import heroTech from "@/assets/hero-tech.jpg";
+import consumerElectronics from "@/assets/consumer-electronics.jpg";
+import enterpriseSolutions from "@/assets/enterprise-solutions.jpg";
+import webDevelopment from "@/assets/web-development.jpg";
+import mobileDevImg from "@/assets/mobile-development.jpg";
+import blockchainTech from "@/assets/blockchain-tech.jpg";
+import systemIntegration from "@/assets/system-integration.jpg";
+import whyChooseUs from "@/assets/why-choose-us.jpg";
+import consultingTeam from "@/assets/consulting-team.jpg";
 
 const Index = () => {
   const services = [
@@ -10,37 +19,37 @@ const Index = () => {
       icon: Smartphone,
       title: "Consumer Electronics",
       description: "Cutting-edge devices and smart solutions for modern living",
-      image: "/placeholder.svg"
+      image: consumerElectronics
     },
     {
       icon: Cloud,
       title: "Enterprise Solutions",
       description: "Scalable cloud infrastructure and business transformation",
-      image: "/placeholder.svg"
+      image: enterpriseSolutions
     },
     {
       icon: Code,
       title: "Web & Mobile Development",
       description: "Custom applications and digital experiences",
-      image: "/placeholder.svg"
+      image: webDevelopment
     },
     {
       icon: Blocks,
       title: "Blockchain Technology",
       description: "Decentralized solutions and cryptocurrency integration",
-      image: "/placeholder.svg"
+      image: blockchainTech
     },
     {
       icon: Zap,
       title: "System Integration",
       description: "Seamless technology integration and optimization",
-      image: "/placeholder.svg"
+      image: systemIntegration
     },
     {
       icon: Shield,
       title: "Consulting Services",
       description: "Strategic technology consulting and implementation",
-      image: "/placeholder.svg"
+      image: consultingTeam
     }
   ];
 
@@ -78,9 +87,9 @@ const Index = () => {
           <div className="text-center">
             <div className="mb-8">
               <img 
-                src="/placeholder.svg" 
-                alt="BitSync Group Hero" 
-                className="mx-auto w-32 h-32 rounded-full shadow-lg"
+                src={heroTech} 
+                alt="BitSync Group Technology Solutions" 
+                className="mx-auto w-32 h-32 rounded-full shadow-lg object-cover"
               />
             </div>
             <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
@@ -194,8 +203,8 @@ const Index = () => {
               <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-white">
                 <div className="mb-6">
                   <img 
-                    src="/placeholder.svg" 
-                    alt="BitSync Technology" 
+                    src={whyChooseUs} 
+                    alt="BitSync Technology Workspace" 
                     className="w-full h-48 object-cover rounded-lg"
                   />
                 </div>

@@ -2,6 +2,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Users, Target, Award, Globe } from "lucide-react";
+import aboutOffice from "@/assets/about-office.jpg";
 
 const About = () => {
   const milestones = [
@@ -69,8 +70,13 @@ const About = () => {
             </div>
           </div>
           <div className="relative">
-            <div className="bg-gradient-to-br from-blue-100 to-purple-100 rounded-2xl p-8 h-96 flex items-center justify-center">
-              <div className="text-center">
+            <div className="bg-gradient-to-br from-blue-100 to-purple-100 rounded-2xl p-8 h-96 flex items-center justify-center relative overflow-hidden">
+              <img 
+                src={aboutOffice} 
+                alt="BitSync Group Office" 
+                className="absolute inset-0 w-full h-full object-cover rounded-2xl opacity-20"
+              />
+              <div className="text-center relative z-10">
                 <div className="text-6xl font-bold text-blue-600 mb-4">14+</div>
                 <div className="text-xl text-gray-700">Years of Excellence</div>
               </div>
