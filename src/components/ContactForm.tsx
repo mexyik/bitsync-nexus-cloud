@@ -20,7 +20,7 @@ const ContactForm = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
     // Basic validation
@@ -36,21 +36,24 @@ const ContactForm = () => {
       return;
     }
 
-    setIsSubmitting(true);
+    // Create email content
+    const subject = `New Contact Form Message from ${formData.name}`;
+    const body = `
+Name: ${formData.name}
+Email: ${formData.email}
+Company: ${formData.company || 'Not provided'}
+Service of Interest: ${formData.service || 'Not specified'}
 
-    try {
-      // Simulate form submission with realistic delay
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
-      console.log("Form submitted:", formData);
-      toast.success("Thank you for your message! We'll get back to you within 24 hours.");
-      setFormData({ name: "", email: "", company: "", service: "", message: "" });
-    } catch (error) {
-      console.error("Form submission error:", error);
-      toast.error("There was an error sending your message. Please try again.");
-    } finally {
-      setIsSubmitting(false);
-    }
+Message:
+${formData.message}
+    `.trim();
+
+    // Open email client with pre-filled data
+    const mailtoLink = `mailto:hello@bitsyncgroup.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.open(mailtoLink, '_blank');
+    
+    toast.success("Opening your email client to send the message to hello@bitsyncgroup.com");
+    setFormData({ name: "", email: "", company: "", service: "", message: "" });
   };
 
   const handleInputChange = (field: string, value: string) => {
